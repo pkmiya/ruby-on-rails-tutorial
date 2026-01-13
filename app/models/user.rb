@@ -10,4 +10,6 @@ class User < ApplicationRecord
         uniqueness: true
   # best practice:
   # validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :password, presence: true, length: { minimum: 6 }
+  has_secure_password
 end
