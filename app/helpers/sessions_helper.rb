@@ -1,13 +1,13 @@
 module SessionsHelper
   # 渡されたユーザーでログインする
   # @param [User] user
-  # @return [void]
+  # @return [nil]
   def log_in(user)
     session[:user_id] = user.id
   end
 
   # ログアウトする
-  # @return [void]
+  # @return [nil]
   def log_out
     reset_session
     @current_user = nil
