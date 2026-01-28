@@ -12,4 +12,12 @@ class User < ApplicationRecord
   # validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true, length: { minimum: 6 }
   has_secure_password
+
+  # 渡された文字列のハッシュ値を返す
+  # @param [String] string
+  # @return [String]
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 end
