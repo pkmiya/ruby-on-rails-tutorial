@@ -56,6 +56,8 @@ class LogoutTest < Logout
     assert_not is_logged_in?
     assert_response :see_other
     assert_redirected_to root_url
+    # 2番目のウィンドウでログアウトをクリックするユーザーをシミュレート
+    delete logout_path
   end
 
   test "redirect after logout" do
@@ -63,5 +65,10 @@ class LogoutTest < Logout
     assert_select "a[href=?]", login_path
     assert_select "a[href=?]", logout_path, count: 0
     assert_select "a[href=?]", user_path(@user), count: 0
+  end
+
+  test "should still work after logout in second window" do
+    delete logout_path
+    assert_redirected_to root_url
   end
 end
