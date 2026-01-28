@@ -11,6 +11,7 @@ module ActiveSupport
     fixtures :all
 
     # テストユーザーがログインしていればtrue、その他ならfalseを返す
+    # @return [Boolean]
     def is_logged_in?
       !session[:user_id].nil?
     end
