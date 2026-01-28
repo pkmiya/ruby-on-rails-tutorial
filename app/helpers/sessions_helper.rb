@@ -6,13 +6,21 @@ module SessionsHelper
     session[:user_id] = user.id
   end
 
-  # @param [User] user
-  # @return [void]
   # 永続セッションのためにユーザーをデータベースに記憶する
+  # @param [User] user
+  # @return [nil]
   def remember(user)
     user.remember
     cookies.permanent.encrypted[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
+  end
+
+  # 永続的セッションを破棄する
+  # @return [nil]
+  def forget(user)
+    user.forget
+    cookies.delete(:user_id)
+    cookies.delete(:remember_token)
   end
 
   # ログアウトする
