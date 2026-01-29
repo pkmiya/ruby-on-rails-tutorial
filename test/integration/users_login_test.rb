@@ -75,17 +75,14 @@ end
 
 class RememberMeTest < UsersLogin
   test "login with remembering" do
-    log_in_as(@user, remember_me: '1')
-    # NOTE: テキストでは、assert_equal cookies[:remember_token], assigns(:user).remember_token となっているが、
-    # assigns(:user) は IntegrationTest では使えないため、cookie がユーザーの remember_token と一致するか authenticated? で検証
-    assert_not_empty cookies[:remember_token]
-    assert @user.reload.authenticated?(cookies[:remember_token])
+    log_in_as(@user, remember_me: "1")
+    assert_equal cookies[:remember_token], assigns(:user).remember_token
   end
 
   test "login without remembering" do
-    log_in_as(@user, remember_me: '1')
+    log_in_as(@user, remember_me: "1")
     delete logout_path
-    log_in_as(@user, remember_me: '0')
+    log_in_as(@user, remember_me: "0")
     assert_empty cookies[:remember_token]
   end
 end
