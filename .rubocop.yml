@@ -1,10 +1,18 @@
 # Omakase Ruby styling for Rails
 inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
+# チュートリアル前章のアプリは RuboCop の対象外
+AllCops:
+  Exclude:
+    - "environment/**/*"
+
 # Overwrite or add rules to create your own house style
 #
 # # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
 # Layout/SpaceInsideArrayLiteralBrackets:
 #   Enabled: false
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: true
 Style/ClassMethods:
   Enabled: true
