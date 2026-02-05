@@ -20,6 +20,15 @@ gem "jbuilder"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "3.1.18"
 
+# Create fake data in all environments
+gem "faker", "2.21.0"
+
+# Use will_paginate to paginate the users index [https://github.com/mislav/will_paginate]
+gem "will_paginate", "3.3.1"
+
+# Use Bootstrap 3 for styling [https://github.com/twbs/bootstrap-sass]
+gem "bootstrap-will_paginate", "1.0.0"
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
