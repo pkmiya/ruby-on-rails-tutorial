@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   resources :users
+  resources :account_activations, only: [ :edit ]
 end
