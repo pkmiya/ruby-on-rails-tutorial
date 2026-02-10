@@ -16,3 +16,7 @@ Layout/EmptyLineAfterGuardClause:
   Enabled: true
 Style/ClassMethods:
   Enabled: true
+
+# シンボルの配列は %i / %I の %記法を強制（例: %i[index edit update]）
+Style/SymbolArray:
+  EnforcedStyle: percent
