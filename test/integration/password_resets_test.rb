@@ -100,4 +100,10 @@ class PasswordUpdateTest < PasswordResetForm
     assert_not flash.empty?
     assert_redirected_to @reset_user
   end
+
+  test "reset_digest should be nil after successful password reset" do
+    patch password_reset_path(@reset_user.reset_token), params: { email: @reset_user.email, user: { password: "foobaz", password_confirmation: "foobaz" } }
+    @reset_user.reload
+    assert_nil @reset_user.reset_digest
+  end
 end
