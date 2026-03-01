@@ -6,6 +6,28 @@ class PasswordResets < ActionDispatch::IntegrationTest
   end
 end
 
+class ExpiredToken < PasswordResets
+  def setup
+    super
+    @user = users(:michael)
+    post password_resets_path, params: { password_reset: { email: @user.email } }
+    @reset_user = assigns(:user)
+    @reset_user.update_attribute(:reset_sent_at, 3.hours.ago)
+    patch password_reset_path(@reset_user.reset_token), params: { email: @reset_user.email, user: { password: "foobar", password_confirmation: "foobar" } }
+  end
+end
+
+class ExpiredTokenTest < ExpiredToken
+  test "should redirect to the password-reset page" do
+    assert_redirected_to new_password_reset_url
+  end
+
+  test "should include the word 'expired' on the password-reset page" do
+    follow_redirect!
+    assert_match "expired", response.body
+  end
+end
+
 class ForgotPasswordFormTest < PasswordResets
   test "password reset path" do
     get new_password_reset_path
