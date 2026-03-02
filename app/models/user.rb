@@ -4,6 +4,7 @@ class User < ApplicationRecord
   before_create :create_activation_digest
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  PASSWORD_RESET_EXPIRATION = 2.hours
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true,
@@ -87,7 +88,7 @@ class User < ApplicationRecord
   # パスワード再設定の期限が切れている場合はtrueを返す
   # @return [Boolean]
   def password_reset_expired?
-    reset_sent_at < 2.hours.ago
+    reset_sent_at < PASSWORD_RESET_EXPIRATION.ago
   end
 
   private
