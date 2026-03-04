@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_27_051920) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_04_073449) do
+  create_table "microposts", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.boolean "activated", default: false
     t.datetime "activated_at"
@@ -26,4 +34,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_27_051920) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
+
+  add_foreign_key "microposts", "users"
 end
