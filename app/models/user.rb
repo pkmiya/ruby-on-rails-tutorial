@@ -17,6 +17,10 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   has_secure_password
 
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
+
   # 渡された文字列のハッシュ値を返す
   # @param [String] string
   # @return [String]
