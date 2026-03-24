@@ -13,6 +13,23 @@ class MicropostsInterfaceTest < MicropostsInterface
     assert_select "div.pagination"
   end
 
+  test "should display the right micropost count" do
+    get root_path
+    assert_match "#{@user.microposts.count} microposts", response.body
+  end
+
+  test "should user proper pluralization for zero microposts" do
+    log_in_as(users(:malory))
+    get root_path
+    assert_match "0 microposts", response.body
+  end
+
+  test "should user proper pluralization for one micropost" do
+    log_in_as(users(:lana))
+    get root_path
+    assert_match "1 micropost", response.body
+  end
+
   test "should show errors but not create micropost on invalid submission" do
     assert_no_difference "Micropost.count" do
       post microposts_path, params: { micropost: { content: "" } }
