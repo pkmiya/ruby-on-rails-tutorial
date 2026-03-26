@@ -20,6 +20,9 @@ gem "jbuilder"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "3.1.18"
 
+# Use Active Storage validations [https://github.com/igorkasyanchuk/active_storage_validations]
+gem "active_storage_validations", "0.9.8"
+
 # Create fake data in all environments
 gem "faker", "2.21.0"
 
