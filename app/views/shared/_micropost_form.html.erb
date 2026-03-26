@@ -6,5 +6,6 @@
   <%= f.submit "Post", class: "btn btn-primary" %>
   <span class="image">
     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+    <%= image_tag "", id: "image_preview", alt: "Image preview" %>
   </span>
 <% end %>

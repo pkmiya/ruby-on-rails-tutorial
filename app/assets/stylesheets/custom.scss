@@ -272,6 +272,11 @@ span.image {
   input {
     border: 0;
   }
+  #image_preview {
+    display: none;
+    max-width: 300px;
+    margin-top: 10px;
+  }
 }
 
 /* miscellaneous */
