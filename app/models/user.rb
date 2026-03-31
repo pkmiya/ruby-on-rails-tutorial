@@ -43,7 +43,7 @@ class User < ApplicationRecord
   # @param [User] other_user
   # @return [nil]
   def unfollow(other_user)
-    following.delete(other_user)
+    following.destroy(other_user)
   end
 
   # 現在のユーザーが他のユーザーをフォローしていればtrueを返す
