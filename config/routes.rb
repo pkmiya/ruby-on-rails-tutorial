@@ -23,8 +23,14 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-  resources :users
+  resources :users do
+    member do
+      get :following
+      get :followers
+    end
+  end
   resources :account_activations, only: [ :edit ]
   resources :password_resets, only: [ :new, :create, :edit, :update ]
   resources :microposts, only: [ :create, :destroy ]
+  resources :relationships, only: [ :create, :destroy ]
 end
