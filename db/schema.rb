@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_24_095141) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_27_051612) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -45,6 +45,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_24_095141) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "followed_id"
+    t.integer "follower_id"
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|
