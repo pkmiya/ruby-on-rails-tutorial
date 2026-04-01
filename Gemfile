@@ -20,6 +20,18 @@ gem "jbuilder"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "3.1.18"
 
+# Use Active Storage validations [https://github.com/igorkasyanchuk/active_storage_validations]
+gem "active_storage_validations", "0.9.8"
+
+# Create fake data in all environments
+gem "faker", "2.21.0"
+
+# Use will_paginate to paginate the users index [https://github.com/mislav/will_paginate]
+gem "will_paginate", "3.3.1"
+
+# Use Bootstrap 3 for styling [https://github.com/twbs/bootstrap-sass]
+gem "bootstrap-will_paginate", "1.0.0"
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
@@ -70,4 +82,5 @@ end
 
 group :production do
   gem "pg", "1.3.5"
+  gem "aws-sdk-s3", "1.114.0", require: false
 end
