@@ -105,7 +105,7 @@ GEM
     aws-sigv4 (1.12.1)
       aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.3.0)
-    bcrypt (3.1.18)
+    bcrypt (3.1.22)
     bcrypt_pbkdf (1.1.1)
     bigdecimal (4.0.1)
     bindex (0.8.1)
@@ -439,7 +439,7 @@ PLATFORMS
 DEPENDENCIES
   active_storage_validations (= 0.9.8)
   aws-sdk-s3 (= 1.114.0)
-  bcrypt (= 3.1.18)
+  bcrypt (= 3.1.22)
   bootsnap
   bootstrap-sass (= 3.4.1)
   bootstrap-will_paginate (= 1.0.0)
