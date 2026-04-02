@@ -18,7 +18,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-gem "bcrypt", "3.1.18"
+gem "bcrypt", "3.1.22"
 
 # Use Active Storage validations [https://github.com/igorkasyanchuk/active_storage_validations]
 gem "active_storage_validations", "0.9.8"
